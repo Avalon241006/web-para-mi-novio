@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carta Floral</title>
+
+<style>
+body{
+margin:0;
+background:#f6f1da;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:"Times New Roman", Times, serif;
+}
+
+.stage{
+width:700px;
+height:1000px;
+background:#f6f1da;
+position:relative;
+box-shadow:0 20px 60px rgba(0,0,0,.2);
+overflow:hidden;
+}
+
+.texto{
+position:absolute;
+top:130px;
+left:90px;
+right:90px;
+bottom:130px;
+color:black;
+font-size:22px;
+line-height:1.6;
+z-index:5;
+}
+
+/* FLORES */
+.flower{
+position:absolute;
+width:40px;
+height:40px;
+}
+
+.petal{
+position:absolute;
+width:14px;
+height:20px;
+background:#ffd84d;
+border-radius:50%;
+left:50%;
+top:50%;
+transform-origin:center bottom;
+}
+
+.center{
+position:absolute;
+width:12px;
+height:12px;
+background:#f4b400;
+border-radius:50%;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="stage">
+
+<div class="texto">
+    <br><br>
+      <br><br>
+Para mi personita especial <3  <br><br>
+
+cada momento contigo <br>
+es una flor mas brota  <br>
+en mi corazón.<br><br>
+
+Eres la luz amarillenta al comenzar el dia que me renueva mi ser,<br>
+mi primavera eterna,<br>
+mi razón favorita<br>
+para sonreír, 🌼
+Cada deseo en esta estacion lo reservo para desear volver a poder disfrutar otra primavera a tu lado🌼<br><br>
+
+Te amo mucho mucho muchisimo :3<br>
+</div>
+
+<div id="flowers"></div>
+
+</div>
+
+<script>
+
+const container = document.getElementById("flowers");
+
+function createFlower(x,y,scale=1){
+
+let f=document.createElement("div");
+f.className="flower";
+f.style.left=x+"px";
+f.style.top=y+"px";
+f.style.transform=`scale(${scale})`;
+
+for(let i=0;i<5;i++){
+let p=document.createElement("div");
+p.className="petal";
+p.style.transform=`translate(-50%,-100%) rotate(${i*72}deg)`;
+f.appendChild(p);
+}
+
+let c=document.createElement("div");
+c.className="center";
+f.appendChild(c);
+
+container.appendChild(f);
+}
+
+// MUCHAS FLORES ALREDEDOR
+const w=700;
+const h=1000;
+
+// izquierda
+for(let y=20;y<h;y+=60){
+createFlower(10,y,1.1);
+}
+
+// derecha
+for(let y=20;y<h;y+=60){
+createFlower(w-50,y,1.1);
+}
+
+// arriba
+for(let x=20;x<w;x+=60){
+createFlower(x,10,1.1);
+}
+
+// abajo
+for(let x=20;x<w;x+=60){
+createFlower(x,h-50,1.1);
+}
+
+// esquinas grandes
+createFlower(20,20,1.6);
+createFlower(w-80,20,1.6);
+createFlower(20,h-80,1.6);
+createFlower(w-80,h-80,1.6);
+
+</script>
+
+</body>
+</html>
